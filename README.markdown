@@ -20,8 +20,8 @@ So, here's the situation I'm in:
 
 Here's what I've done:
 
-* I've written a `make.rb` script. This script reads my posts from my Octopress blog, extracts out the YAML metadata, and parses the rest of the file through [Redcarpet](https://github.com/tanoku/redcarpet). It outputs all files in a JSON file called `posts.json`. (Yes, I know this should be a `Rakefile`)
+* I've written a simple `Rakefile` with a single task, `compile`. This task reads my posts from the `/posts` folder (which is copied straight from my Octopress blog), extracts out the YAML metadata, and parses the rest of the file through [Redcarpet](https://github.com/tanoku/redcarpet). It outputs all files in a JSON file called `posts.json`. 
 * I've run through http://www.initializr.com/ (which is awesome), and set up a really basic skeleton using Less (also awesome), and [HTML5 Boilerplate](http://html5boilerplate.com/) with all the stuff I don't use stripped out.
-* I've added just enough [Coffeescript](http://coffeescript.org) to render a list of posts, and show each post using [Backbone.js](http://documentcloud.github.com/backbone/), and MVC-like framework for the browser.
+* I've added just enough [Coffeescript](http://coffeescript.org) to render a list of posts, and show each post using [Backbone.js](http://documentcloud.github.com/backbone/), an MVC-like framework for the browser.
 
 The result of this is that I have a folder of Markdown posts I can write in [Mou](http://mouapp.com/), and then 'compile' locally, before deploying what is now a static site wherever the hell I want. That is why I called this repo **blog-simple** (for now). It's just a website, and we all know how to poke those.
