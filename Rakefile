@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 # make
-# Got you! This isn't actually a Makefile.
 # It just reads my markdown posts, and turns them into a JSON file
 # that I can serve. Neat!
 
@@ -78,25 +77,25 @@ class Post
   end
 end
 
-class Make
 
-  def initialize(posts_folder = "./posts", output_file = "./posts.json")
-    posts = []
-    Dir[File.join(posts_folder, "*.markdown")].each do |post|
-      posts << Post.new(post)
-    end
-
-    FileUtils.rm(output_file) if File.exists?(output_file)
-    File.open(output_file, 'wb') do |file|
-      file << posts.to_json
-    end
-
-    puts "Compiled #{posts.length} markdown files into #{output_file}!"
+desc "Compile markdown posts into HTML inside a JSON file"
+task :compile do
+  posts = []
+  posts_folder = "./posts"
+  output_file = "./posts.json"
+  Dir[File.join(posts_folder, "*.markdown")].each do |post|
+    posts << Post.new(post)
   end
+
+  FileUtils.rm(output_file) if File.exists?(output_file)
+  File.open(output_file, 'wb') do |file|
+    file << posts.to_json
+  end
+
+  puts "Compiled #{posts.length} markdown files into #{output_file}!"
 end
 
-Make.new
-
+task :default => [:compile]
 
 
 
